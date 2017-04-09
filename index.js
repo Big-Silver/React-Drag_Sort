@@ -5,6 +5,9 @@ import {SortableContainer, SortableElement, arrayMove} from './src/index';
 import range from 'lodash/range';
 import random from 'lodash/random';
 
+function removelist() {
+    console.log("www");
+}
 const SortableItem = SortableElement(({height, value}) => (
     <div style={{
         position: 'relative',
@@ -35,9 +38,6 @@ const SortableList = SortableContainer(({items}) => (
         border: '1px solid #EFEFEF',
         borderRadius: 3
     }}>
-        <div>
-            <button onclick="this.removelist()">Remove</button>
-        </div>
         {items.map(({height, value}, index) => <SortableItem key={`item-${index}`} index={index} value={value} height={height}/>)}
     </div>
 ));
@@ -64,7 +64,9 @@ class Example extends Component {
     render() {
         const {items} = this.state;
 
-        return <SortableList items={items} onSortEnd={this.onSortEnd} />;
+        return (
+            <SortableList items={items} onSortEnd={this.onSortEnd} />
+        );
     }
 }
 
